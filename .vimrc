@@ -3,7 +3,10 @@ filetype off " required
 syntax on
 
 " set the runtime path to include Vundle and initialize
-set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim 
+" Uncomment the next line on Windows, assuming that %HOME% is defined
+" and bundle is under vimfiles. Change this according to you local setup
+" set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
 
 " Vundle Plugins start here
 call vundle#begin()
