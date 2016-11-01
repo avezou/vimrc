@@ -3,7 +3,7 @@ filetype off " required
 syntax on
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim 
+set rtp+=~/.vim/bundle/Vundle.vim
 " Uncomment the next line on Windows, assuming that %HOME% is defined
 " and bundle is under vimfiles. Change this according to you local setup
 " set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
@@ -41,11 +41,11 @@ let mapleader = ","
 " Map jj to escape
 inoremap jj <ESC>
 
+" Make leader a select all
+nnoremap <leader>a ggVG
+
 " Turn syntax highlighting on
 set t_Co=256
-
-" Map Ctrl-N to toggle Nerd Tree
-" map <C-n> :NERDTreeToggle<CR>
 
 " Use previous line indentation
 set autoindent
@@ -72,6 +72,7 @@ autocmd BufNewFile,BufRead *.py set tabstop=4|
     \set expandtab|
     \set autoindent|
     \set fileformat=unix
+autocmd FileType python setlocal cindent
 
 " Set indent for html family files
 autocmd BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|
@@ -79,7 +80,7 @@ autocmd BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|
     \set shiftwidth=2
 
 " Flag bad whitespace
-" au BufRead,BufNewFile *.py, *.pyw, *.c, *.h, *.cpp, *.java match BadWhiteSpace /\s\+$/
+" autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h, *.cpp, *.java match BadWhiteSpace /\s\+$/
 
 " Turn line number on
 set number
@@ -104,7 +105,7 @@ set wildignore=*.o,*~,*.pyc,*.class
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " Configure backspace
 set backspace=eol,start,indent
@@ -145,9 +146,6 @@ vnoremap <tab> %
 
 " Make ; do the same thing as :
 nnoremap ; :
-
-" Split window and switch to new one
-nnoremap <leader>w <C-w>v<C-w>l
 
 " Maps to move around split windows
 nnoremap <C-h> <C-w>h
