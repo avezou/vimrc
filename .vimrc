@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/gundo'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/syntastic'
 Plugin 'skammer/vim-css-color'
 Plugin 'tpope/vim-fugitive'
@@ -26,6 +26,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Plugin 'ajh17/VimCompletesMe'
 " Plugin 'Shougo/neocomplete.vim'
@@ -46,6 +47,9 @@ nnoremap <leader>a ggVG
 
 " Turn syntax highlighting on
 set t_Co=256
+
+" Highlight current line
+set cursorline
 
 " Use previous line indentation
 set autoindent
@@ -165,14 +169,16 @@ set foldlevel=99
 nnoremap <space> za
 
 " Python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os
+" import sys
+
+" if 'VIRTUAL_ENV' in os.environ:
+"    project_base_dir = os.environ['VIRTUAL_ENV']
+"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"    execfile(activate_this, dict(__file__=activate_this))
+" endif
+
 
 " Make python look pretty
 let python_highlight_all=1
@@ -184,5 +190,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] " ignore files in NERDTree
 " Open NERDTree if no file is specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd Vimenter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " Toggle NERDTree with Ctrl+N
-map <C-n>:NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
