@@ -27,6 +27,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
 
 " Plugin 'ajh17/VimCompletesMe'
 " Plugin 'Shougo/neocomplete.vim'
@@ -157,6 +159,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Docstring preview for folded code
+let g:SimpylFold_docstring_preview=1
+
 " Powerline
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\
 set laststatus=2
@@ -164,6 +169,9 @@ set laststatus=2
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" Set system clipboard to work in vim
+set clipboard=unnamed 
 
 " Enable folding with the spacebar
 nnoremap <space> za
