@@ -11,14 +11,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Vundle Plugins start here
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/gundo'
-Plugin 'scrooloose/nerdtree'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'scrooloose/syntastic'
-Plugin 'skammer/vim-css-color'
-Plugin 'tpope/vim-fugitive'
-Plugin 'godlygeek/tabular'
+Plugin 'VundleVim/Vundle.vim' "Plugin Manager
+Plugin 'vim-scripts/gundo' "Undo file
+Plugin 'scrooloose/nerdtree' "File explorer
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'} "Status bar on crack
+Plugin 'scrooloose/syntastic' "Syntax highlighter
+Plugin 'skammer/vim-css-color' 
+Plugin 'tpope/vim-fugitive' "Git wrapper
+Plugin 'godlygeek/tabular' "Alignment
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-repeat'
 Plugin 'tmhedberg/SimpylFold'
@@ -29,6 +29,13 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'dpelle/vim-LanguageTool'
+Plugin 'w0rp/ale'
 
 " Plugin 'ajh17/VimCompletesMe'
 " Plugin 'Shougo/neocomplete.vim'
@@ -88,6 +95,15 @@ autocmd BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|
 " Flag bad whitespace
 " autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h, *.cpp, *.java match BadWhiteSpace /\s\+$/
 
+" Raimond/delimitMate settings
+let delimitMate_expand = 1
+augroup mydelimitMate
+    au!
+    au FileType markdown let b:delimitMate_nesting_quotes = [" "]
+    au FileType tex let b:delimitMate_quotes = ""
+    au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+    au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
 " Turn line number on
 set number
 
@@ -137,6 +153,10 @@ set nobackup
 set nowb
 set noswapfile
 
+" Set backup directory to ~/tmp
+set backupdir-=.
+set backupdir=~/tmp
+
 " Keep an undo file to undo changes even after closing a file
 set undofile
 
@@ -162,9 +182,22 @@ nnoremap <C-l> <C-w>l
 " Docstring preview for folded code
 let g:SimpylFold_docstring_preview=1
 
+" Easytags settings
+set tags=./tags;,~/.vimtags
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" tagbar settings
+nmap <silent> <leader>b :TagbarToggle<CR>
+
 " Powerline
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\
 set laststatus=2
+
+let g:airline_powerline_fonts = 1
 
 " Enable folding
 set foldmethod=indent
@@ -201,3 +234,12 @@ autocmd Vimenter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Toggle NERDTree with Ctrl+N
 map <C-n> :NERDTreeToggle<CR>
+
+" Toggle paste mode
+set pastetoggle=<F3>
+
+" Set LanguageTool location
+let g:languagetool_jar='$HOME/languagetool/languagetool-commandline.jar'
+
+" Map F8 to fix errors with ALE
+nmap <F8> <Plug>(ale_fix)
