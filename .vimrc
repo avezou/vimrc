@@ -36,6 +36,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'dpelle/vim-LanguageTool'
 Plugin 'w0rp/ale'
+Plugin 'rust-lang/rust.vim'
 
 " Plugin 'ajh17/VimCompletesMe'
 " Plugin 'Shougo/neocomplete.vim'
@@ -150,15 +151,18 @@ set magic
 
 " Turn backup off. Everything should be under source control
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Set backup directory to ~/tmp
-set backupdir-=.
-set backupdir=~/tmp
+" set backupdir-=.
+set backupdir=~/tmp//
+
+set directory=~tmp//
 
 " Keep an undo file to undo changes even after closing a file
 set undofile
+set undodir=~/tmp//
 
 " Set gdefault to not need /g when replacing texts
 set gdefault
