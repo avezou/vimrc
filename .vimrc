@@ -8,6 +8,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " and bundle is under vimfiles. Change this according to you local setup
 " set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
 
+" Install Vundle first with
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 " Vundle Plugins start here
 call vundle#begin()
 
