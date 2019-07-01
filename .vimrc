@@ -28,7 +28,6 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
@@ -41,8 +40,16 @@ Plugin 'dpelle/vim-LanguageTool'
 Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 
-" Plugin 'ajh17/VimCompletesMe'
+Plugin 'ajh17/VimCompletesMe'
+Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'roxma/nvim-yarp'
 " Plugin 'Shougo/neocomplete.vim'
+" Plugin 'ncm2/ncm2'
+" Plugin 'HansPinckaers/ncm2-jedi'
+" Plugin 'ncm2/ncm2-bufword'
+" Plugin 'ncm2/ncm2-path'
+" Plugin 'davidhalter/jedi-vim'
+
 
 call vundle#end()
 " Vundle Plugins end here
@@ -250,3 +257,12 @@ let g:languagetool_jar='$HOME/languagetool/languagetool-commandline.jar'
 
 " Map F8 to fix errors with ALE
 nmap <F8> <Plug>(ale_fix)
+
+" Disable Jedi-vim autocompletion and enable call-signatures options
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
