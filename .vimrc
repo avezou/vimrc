@@ -106,6 +106,9 @@ autocmd BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|
 " Flag bad whitespace
 " autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h, *.cpp, *.java match BadWhiteSpace /\s\+$/
 
+" Indentation for Yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " Raimond/delimitMate settings
 let delimitMate_expand = 1
 augroup mydelimitMate
