@@ -12,3 +12,6 @@ alias svcstop="sudo systemctl stop"
 alias svim="sudo vim"
 alias nginxt="sudo nginx -t"
 alias nginxreload="sudo systemctl relaod nginx"
+# Install lsd with (sudo snap install lsd)
+# Alias ls to lsd
+alias ls="lsd -lah"
