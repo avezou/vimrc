@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+mkdir ~/.bash
+mkidir -p ~/.vim/bundle
+
+git clone git://github.com/jimeh/git-aware-prompt.git ~/.bash
+
+pip install virtualenv
+pip install virtualenvwrapper
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+echo "export GITAWAREPROMPT=~/.bash/git-aware-prompt" >> ~/.bashrc
+echo "${GITAWAREPROMPT}/main.sh" >> ~/.bashrc
+echo "export PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w
+\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ \"" >> ~/.bashrc
+
+echo "export WORKON_HOME=\"$HOME/.virtualenvs\"" >> ~/.bashrc 
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+
+vim +PluginInstall +qall
