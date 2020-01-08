@@ -164,18 +164,28 @@ set magic
 
 " Turn backup off. Everything should be under source control
 set nobackup
-set nowritebackup
-set noswapfile
+#set nowritebackup
+#set noswapfile
+
+if !isdirectory($HOME."/.vim/undo_dir")
+    call mkdir($HOME."/.vim/undo_dir", "p", "0700")
+endif
+if !isdirectory($HOME."/.vim/backup_dir")
+    call mkdir($HOME."/.vim/backup_dir", "p", "0700")
+endif
+if !isdirectory($HOME."/.vim/swap_dir")
+    call mkdir($HOME."/.vim/swap_dir", "p", "0700")
+endif
 
 " Set backup directory to ~/tmp
 " set backupdir-=.
-set backupdir=~/tmp//
+set backupdir=~/.vim/backup_dir
 
-set directory=~tmp//
+set directory=~/.vim/swap_dir
 
 " Keep an undo file to undo changes even after closing a file
 set undofile
-set undodir=~/tmp//
+set undodir=~/.vim/undo_dir
 
 " Set gdefault to not need /g when replacing texts
 set gdefault
@@ -269,3 +279,4 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
+
