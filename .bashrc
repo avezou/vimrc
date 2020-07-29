@@ -130,4 +130,4 @@ export NVM_DIR="$HOME/.nvm"
 #Git aware prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$bldgrn\]\$git_ahead_mark\$git_ahead_count\[$txtrst\]\[$bldred\]\$git_behind_mark\$git_behind_count\[$txtrst\]\[$bldyellow\]\$git_stash_mark\[$txtrst\]\[$txtylw\]\$git_dirty\$git_dirty_count\[$txtrst\]\[$txtcyn\]\$git_staged_mark\$git_staged_count\[$txtrst\]\[$txtblu\]\$git_unknown_mark\$git_unknown_count\[$txtrst\]\$ "
+export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\](\D{%F %T}):\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$bldgrn\]\$git_ahead_mark\$git_ahead_count\[$txtrst\]\[$bldred\]\$git_behind_mark\$git_behind_count\[$txtrst\]\[$bldyellow\]\$git_stash_mark\[$txtrst\]\[$txtylw\]\$git_dirty\$git_dirty_count\[$txtrst\]\[$txtcyn\]\$git_staged_mark\$git_staged_count\[$txtrst\]\[$txtblu\]\$git_unknown_mark\$git_unknown_count\[$txtrst\]\$ "
