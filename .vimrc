@@ -163,9 +163,8 @@ set lazyredraw
 set magic
 
 " Turn backup off. Everything should be under source control
-set nobackup
-#set nowritebackup
-#set noswapfile
+set nobackup nowritebackup
+set noswapfile
 
 if !isdirectory($HOME."/.vim/undo_dir")
     call mkdir($HOME."/.vim/undo_dir", "p", "0700")
