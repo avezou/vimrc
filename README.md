@@ -6,10 +6,10 @@ It pretty much used to setup my vim, virtualenv and virtualenvwrapper (because I
 gitaware promt, a little tool I've come to love. 
 
 ## Installation
-'''
+```
 cd /path/to/vimrc # The folder containing this file
 chmod +x setup
 ./setup
-'''
+```
 
 This should clone the necessary repos, create the necessary directories and move and edit necessary files. 
