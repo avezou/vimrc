@@ -14,42 +14,50 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Vundle Plugins start here
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim' "Plugin Manager
+" Plugin Manager
+Plugin 'VundleVim/Vundle.vim' 
+" Undo file for undo after buffer close
 Plugin 'vim-scripts/gundo' "Undo file
-Plugin 'scrooloose/nerdtree' "File explorer
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'} "Status bar on crack
-Plugin 'scrooloose/syntastic' "Syntax highlighter
-Plugin 'skammer/vim-css-color' 
-Plugin 'tpope/vim-fugitive' "Git wrapper
-Plugin 'godlygeek/tabular' "Alignment
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-repeat'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
+" File explorer
+Plugin 'scrooloose/nerdtree'
+" Status bar (powerline)
+Plugin 'vim-airline/vim-airline'
+" Syntax checker
+Plugin 'vim-syntastic/syntastic'
+" Python backend for 'syntastic'
 Plugin 'nvie/vim-flake8'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Search bar
+Plugin 'kien/ctrlp.vim'
+" Theme
+Plugin 'crusoexia/vim-monokai'
+" Powerful commenting utility
+Plugin 'scrooloose/nerdcommenter'
+" Rich python syntax highlighting
+Plugin 'kh3phr3n/python-syntax'
+" Markdown plugin
+Plugin 'plasticboy/vim-markdown'
+" Code folding
+Plugin 'tmhedberg/SimpylFold'
+" Plugin 'jistr/vim-nerdtree-tabs'
+" Git plugin for Nerdtree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" Tag bar
 Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Raimondi/delimitMate'
+" Spell checking
 Plugin 'dpelle/vim-LanguageTool'
-Plugin 'w0rp/ale'
-Plugin 'rust-lang/rust.vim'
-
-Plugin 'ajh17/VimCompletesMe'
-Plugin 'ludovicchabant/vim-gutentags'
-" Plugin 'roxma/nvim-yarp'
-" Plugin 'Shougo/neocomplete.vim'
+" Auto indent for python
+Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'ajh17/VimCompletesMe'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sansyrox/vim-python-virtualenv'
 " Plugin 'ncm2/ncm2'
 " Plugin 'HansPinckaers/ncm2-jedi'
 " Plugin 'ncm2/ncm2-bufword'
 " Plugin 'ncm2/ncm2-path'
-" Plugin 'davidhalter/jedi-vim'
-
+Plugin 'davidhalter/jedi-vim'
+Plugin 'lepture/vim-jinja'
+" Project wide search
+Plugin 'wsdjeg/FlyGrep.vim'
 
 call vundle#end()
 " Vundle Plugins end here
@@ -105,6 +113,10 @@ autocmd BufNewFile,BufRead *.js, *.html, *.css set tabstop=2|
 
 " Flag bad whitespace
 " autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h, *.cpp, *.java match BadWhiteSpace /\s\+$/
+au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+set encoding=utf-8
+
 
 " Indentation for Yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -246,7 +258,6 @@ nnoremap <space> za
 "    execfile(activate_this, dict(__file__=activate_this))
 " endif
 
-
 " Make python look pretty
 let python_highlight_all=1
 
@@ -279,3 +290,19 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+
+let g:kite_supported_languages = ['python', 'javascript', 'html', 'css']
+
+let g:kite_tab_complete=1
+
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+
+nmap <F8> :TagbarToggle<CR>
+
+" Enable vimpy to ask for help when it cannot resolve relative imports automatically
+let g:vimpy_prompt_resolve = 1
+
+" Enable vim to remove unused imports
+let g:vimpy_remove_unused = 1
