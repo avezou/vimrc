@@ -43,6 +43,23 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Tag bar
 Plugin 'majutsushi/tagbar'
+" Easy on the eyes color scheme
+Plugin 'jnurmine/Zenburn'
+" Solarized theme
+Plugin 'altercation/vim-colors-solarized'
+" Automated tag generation
+Plugin 'xolox/vim-easytags'
+" Auto closing of brackets, quotes, etc.
+Plugin 'Raimondi/delimitMate'
+" Auto complete
+Plugin 'ajh17/VimCompletesMe'
+" Async linter
+Plugin 'dense-analysis/ale'
+" Tag file manager, keeps them out of your way
+Plugin 'ludovicchabant/vim-gutentags'
+" CSS color preview in vim
+Plugin 'ap/vim-css-color' 
+Plugin 'godlygeek/tabular' "Alignment
 " Spell checking
 Plugin 'dpelle/vim-LanguageTool'
 " Auto indent for python
