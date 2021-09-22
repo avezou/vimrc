@@ -65,10 +65,6 @@ Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'ajh17/VimCompletesMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sansyrox/vim-python-virtualenv'
-" Plugin 'ncm2/ncm2'
-" Plugin 'HansPinckaers/ncm2-jedi'
-" Plugin 'ncm2/ncm2-bufword'
-" Plugin 'ncm2/ncm2-path'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'lepture/vim-jinja'
 " Project wide search
@@ -77,6 +73,10 @@ Plugin 'wsdjeg/FlyGrep.vim'
 Plugin 'xolox/vim-easytags'
 " Miscellaneous vim utils required by easytags
 Plugin 'xolox/vim-misc'
+" Python import plugin
+Plugin 'mgedmin/python-imports.vim'
+" More import tools for python
+Plugin 'relastle/vim-nayvy'
 
 call vundle#end()
 " Vundle Plugins end here
@@ -266,17 +266,6 @@ set clipboard=unnamed
 " Enable folding with the spacebar
 nnoremap <space> za
 
-" Python with virtualenv support
-" py << EOF
-" import os
-" import sys
-
-" if 'VIRTUAL_ENV' in os.environ:
-"    project_base_dir = os.environ['VIRTUAL_ENV']
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"    execfile(activate_this, dict(__file__=activate_this))
-" endif
-
 " Make python look pretty
 let python_highlight_all=1
 
@@ -320,8 +309,16 @@ autocmd CompleteDone * if !pumvisible() | pclose | endif
 
 nmap <F8> :TagbarToggle<CR>
 
-" Enable vimpy to ask for help when it cannot resolve relative imports automatically
-let g:vimpy_prompt_resolve = 1
+nmap <F5> :ImportName<CR>
+nmap <C-F5> :ImportNameHere<CR>
+nmap <F7> <Plug>(ale_fix<CR>)
 
-" Enable vim to remove unused imports
-let g:vimpy_remove_unused = 1
+" ALE Fix 
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'python': ['autoflake', 'autoimport']
+\}
+
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
