@@ -47,8 +47,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jnurmine/Zenburn'
 " Solarized theme
 Plugin 'altercation/vim-colors-solarized'
-" Automated tag generation
-Plugin 'xolox/vim-easytags'
 " Auto closing of brackets, quotes, etc.
 Plugin 'Raimondi/delimitMate'
 " Auto complete
@@ -75,6 +73,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'lepture/vim-jinja'
 " Project wide search
 Plugin 'wsdjeg/FlyGrep.vim'
+" Automated tag generation
+Plugin 'xolox/vim-easytags'
+" Miscellaneous vim utils required by easytags
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 " Vundle Plugins end here
