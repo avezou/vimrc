@@ -8,7 +8,7 @@ gitaware promt, a little tool I've come to love.
 This requires PIP to be installed to a directory in your PATH
 
 ## Requirements
-#  Make sure the following modules are installed (I have them in my system python)
+###  Make sure the following modules are installed (I have them in my system python)
 * autoflake (sudo pip install autoflake)
 * autoimport (sudo pip install autoimport)
 
