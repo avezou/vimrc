@@ -11,22 +11,21 @@ pip install autoflake
 pip install autoimport
 pip install isort
 
-git clone git://github.com/jimeh/git-aware-prompt.git ~/.bash
+git clone git://github.com/jimeh/git-aware-prompt.git ~/.bash/git-aware-prompt
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "export WORKON_HOME=\"$HOME/.virtualenvs\"" >> ~/.bashrc 
-echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+echo "source ~/.local/bin/virtualenvwrapper.sh" >> ~/.bashrc
 
 vim +PluginInstall +qall
 
 
-echo "export GITAWAREPROMPT=~/.bash" >> ~/.bashrc
-echo "source ${GITAWAREPROMPT}/main.sh" >> ~/.bashrc
+echo "export GITAWAREPROMPT=~/.bash/git-aware-prompt" >> ~/.bashrc
+echo "source \${GITAWAREPROMPT}/main.sh" >> ~/.bashrc
 
 # Debian/Ubuntu terminals (only tested with Ubuntu with gnome/xfce
-echo "export PS1="\${debian_chroot:+\$debian_chroot}\u@\h:\w\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "" >> ~/.bashrc
+#echo "export PS1="\${debian_chroot:+\$debian_chroot}\u@\h:\w\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "" >> ~/.bashrc
 # Arch based distros (only tested with Manjaro with gnome/xfce)
 #echo "export PS1=\"\[\033[01;32m\][\u@\h\[\033[0;33m\]\w\[\033[01;32m\]]\$txtcyn\$git_branch\$txtred\$git_dirty\$txtrst\[\033[01;32\]\$\ \""
-
-
-
+echo "export PS1=\"\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[33m\]\[\$txtcyn\]\$git_branch\[\$txtred\]\$git_dirty\[\$txtrst\]\[\e[m\]\$ \"" >> ~/.bashrc
+echo "COLUMNS=1000" >> ~/.bashrc
