@@ -1,17 +1,14 @@
 # vimrc
 
-I know the repo name is vim, but this does a little more than that.
+This sets up Vim as an IDE (mostly for python) and adds some usability tricks to bash prompt.
 
-It pretty much used to setup my vim, virtualenv and virtualenvwrapper (because I'mlazy). It also downloads and sets up
+It's pretty much used to setup my vim, virtualenv and virtualenvwrapper (because I'mlazy). It also downloads and sets up
 gitaware promt, a little tool I've come to love.
 
 This requires PIP to be installed to a directory in your PATH
 
 ## Requirements
-###  Make sure the following modules are installed (I have them in my system python)
-* ~~autoflake (sudo pip install autoflake)
-* autoimport (sudo pip install autoimport)~~
-This should no longer be needed. The setup script should install both packages.
+PIP installed and on the path
 
 ## Installation
 ```
