@@ -11,10 +11,10 @@ pip install autoflake
 pip install autoimport
 pip install isort
 
-git clone git://github.com/jimeh/git-aware-prompt.git ~/.bash/git-aware-prompt
+git clone https://github.com/jimeh/git-aware-prompt.git ~/.bash/git-aware-prompt
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-echo "export WORKON_HOME=\"$HOME/.virtualenvs\"" >> ~/.bashrc 
+echo "export WORKON_HOME=\"$HOME/.virtualenvs\"" >> ~/.bashrc
 echo "source ~/.local/bin/virtualenvwrapper.sh" >> ~/.bashrc
 
 vim +PluginInstall +qall
