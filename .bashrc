@@ -141,9 +141,17 @@ source "${GITAWAREPROMPT}/main.sh"
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 
-#export PS1="\u@\h:\w [$txtcyn]$git_branch$git_dirty$ " 
+#export PS1="\u@\h:\w [$txtcyn]$git_branch$git_dirty$ "
 export PS1="\[\033[01;32m\][\u@\h \[\033[0;33m\]\w\[\033[01;32m\]]\$txtcyn\$git_branch\$txtred\$git_dirty\$txtrst\[\033[01;32\]\$\ "
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
+weather() {
+    if [ $# -eq 0 ]
+    then
+        curl wttr.in
+    else
+        curl wttr.in/#1
+    fi
+}
