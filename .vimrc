@@ -19,17 +19,13 @@ call vundle#begin()
 " Plugin Manager
 Plugin 'VundleVim/Vundle.vim'
 " Undo file for undo after buffer close
-Plugin 'vim-scripts/gundo' "Undo file
+Plugin 'mbbill/undotree'
 " File explorer
 Plugin 'preservim/nerdtree'
 " Git plugin for Nerdtree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-" NerdTree filetype icons
-Plugin 'ryanoasis/vim-devicons'
 " Nerdtree filetype highlight
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Nerdtree project setting
-Plugin 'scrooloose/nerdtree-project-plugin'
 " Nerdtree highlight open buffers and close files
 Plugin 'PhilRunninger/nerdtree-buffer-ops'
 " Nerdtree multiple files operations
@@ -56,7 +52,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Code folding
 Plugin 'tmhedberg/SimpylFold'
-
+" Kotlin support
+Plugin 'udalov/kotlin-vim'
 " Tag bar
 Plugin 'preservim/tagbar'
 " Easy on the eyes color scheme
@@ -235,21 +232,21 @@ set noswapfile
 
 " If you want to create backups, this section will keep them (and swap files)
 " under the .vim (vimfiles for windows) directory
-if !isdirectory($HOME."/.vim/undo_dir")
-    call mkdir($HOME."/.vim/undo_dir", "p", "0700")
+if !isdirectory($HOME."/.cache/vim/undo_dir")
+    call mkdir($HOME."/.cache/vim/undo_dir", "p", "0700")
 endif
-if !isdirectory($HOME."/.vim/backup_dir")
-   call mkdir($HOME."/.vim/backup_dir", "p", "0700")
+if !isdirectory($HOME."/.cache/vim/backup_dir")
+   call mkdir($HOME."/.cache/vim/backup_dir", "p", "0700")
 endif
-if !isdirectory($HOME."/.vim/swap_dir")
-   call mkdir($HOME."/.vim/swap_dir", "p", "0700")
+if !isdirectory($HOME."/.cache/vim/swap_dir")
+   call mkdir($HOME."/.cache/vim/swap_dir", "p", "0700")
 endif
 set backupdir=~/.vim/backup_dir
 set directory=~/.vim/swap_dir
 
 " Keep an undo file to undo changes even after closing a file
 set undofile
-set undodir=~/.vim/undo_dir
+set undodir=~/.cache/vim/undo_dir
 
 " Set gdefault to not need /g when replacing texts
 set gdefault
@@ -332,21 +329,58 @@ let g:kite_tab_complete=1
 
 autocmd CompleteDone * if !pumvisible() | pclose | endif
 
-" Map F9 to fix errors with ALE
-nmap <F9> <Plug>(ale_fix)
-" Map F8 to togle tag bar on the right
-nmap <F8> :TagbarToggle<CR>
-" Map F5 to import name
-nmap <F5> :ImportName<CR>
-" Map Ctrp+F5 to import above the cursor
-nmap <C-F5> :ImportNameHere<CR>
+" Setup gutentags
+let g:gutentags_add_default_project_roots = 0
+let g:gurentags_project_root = ['package.json', '.git', 'manage.py']
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
 
-" ALE Fixers
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'python': ['autoimport', 'autoflake', 'autopep8', 'isort', 'yapf']
-\}
+" Undo tree toggle
+nnoremap <F5> :UndotreeToggle<CR>
 
-" Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+" if set, let undotree window get focus after being opened, otherwise
+" focus will stay in current window.
+if !exists('g:undotree_SetFocusWhenToggle')
+    let g:undotree_SetFocusWhenToggle = 1
+endif
+
+" tree node shape.
+"if !exists('g:undotree_TreeNodeShape')
+""    let g:undotree_TreeNodeShape = '*'
+"endif
+
+if !exists('g:undotree_HighlightChangedText')
+    let g:undotree_HighlightChangedText = 1
+endif
+
+" Show help line
+if !exists('g:undotree_HelpLine')
+    let g:undotree_HelpLine = 1
+endif
+
+" Show cursorline
+if !exists('g:undotree_CursorLine')
+    let g:undotree_CursorLine = 1
+endif
+
+" e.g. using 'd' instead of 'days' to save some space.
+if !exists('g:undotree_ShortIndicators')
+    let g:undotree_ShortIndicators = 0
+endif
+
+if has("persistent_undo")
+   let target_path = expand('~/.cache/vim/undo_dir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
