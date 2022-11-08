@@ -21,9 +21,23 @@ Plugin 'VundleVim/Vundle.vim'
 " Undo file for undo after buffer close
 Plugin 'vim-scripts/gundo' "Undo file
 " File explorer
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
+" Git plugin for Nerdtree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" NerdTree filetype icons
+Plugin 'ryanoasis/vim-devicons'
+" Nerdtree filetype highlight
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Nerdtree project setting
+Plugin 'scrooloose/nerdtree-project-plugin'
+" Nerdtree highlight open buffers and close files
+Plugin 'PhilRunninger/nerdtree-buffer-ops'
+" Nerdtree multiple files operations
+Plugin 'PhilRunninger/nerdtree-visual-selection'
 " Status bar (powerline)
 Plugin 'vim-airline/vim-airline'
+" Visually move block of text
+Plugin 'matze/vim-move'
 " Syntax checker
 Plugin 'vim-syntastic/syntastic'
 " Python backend for 'syntastic'
@@ -42,10 +56,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Code folding
 Plugin 'tmhedberg/SimpylFold'
-" Git plugin for Nerdtree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 " Tag bar
-Plugin 'majutsushi/tagbar'
+Plugin 'preservim/tagbar'
 " Easy on the eyes color scheme
 Plugin 'jnurmine/Zenburn'
 " Solarized theme
@@ -222,22 +235,17 @@ set noswapfile
 
 " If you want to create backups, this section will keep them (and swap files)
 " under the .vim (vimfiles for windows) directory
-" if !isdirectory($HOME."/.vim/undo_dir")
-"     call mkdir($HOME."/.vim/undo_dir", "p", "0700")
-" endif
-" if !isdirectory($HOME."/.vim/backup_dir")
-"    call mkdir($HOME."/.vim/backup_dir", "p", "0700")
-" endif
-" if !isdirectory($HOME."/.vim/swap_dir")
-"    call mkdir($HOME."/.vim/swap_dir", "p", "0700")
-"endif
-" set backupdir=~/.vim/backup_dir
-" set directory=~/.vim/swap_dir
-
-" Undo file directory
 if !isdirectory($HOME."/.vim/undo_dir")
     call mkdir($HOME."/.vim/undo_dir", "p", "0700")
 endif
+if !isdirectory($HOME."/.vim/backup_dir")
+   call mkdir($HOME."/.vim/backup_dir", "p", "0700")
+endif
+if !isdirectory($HOME."/.vim/swap_dir")
+   call mkdir($HOME."/.vim/swap_dir", "p", "0700")
+endif
+set backupdir=~/.vim/backup_dir
+set directory=~/.vim/swap_dir
 
 " Keep an undo file to undo changes even after closing a file
 set undofile
@@ -266,7 +274,7 @@ nnoremap <C-l> <C-w>l
 let g:SimpylFold_docstring_preview=1
 
 " Easytags settings
-set tags=./tags;,~/.vimtags
+set tags=~/.vimtags
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
 let g:easytags_dynamic_files = 2
@@ -280,8 +288,8 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " Enable folding
-" set foldmethod=indent
-" set foldlevel=99
+set foldmethod=indent
+set foldlevel=99
 
 " Set system clipboard to work in vim
 set clipboard=unnamed
