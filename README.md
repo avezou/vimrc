@@ -20,10 +20,5 @@ chmod +x setup
 If everything goes well, you should have a batteries-included vim IDE that is well suited
 for python development. It includes linters, autocomplete, goto definition, find references, etc.
 The linter should let you know what is wrong. For missing imports (and other fixes)
-:ALEFix should import the missing imports automatically.
-
-## To be Done
-* Map ALEFix and ALEFixSuggest to some keys for easier workflow.
-* Document all current key mapping
 
 This should clone the necessary repos, create the necessary directories and move and edit necessary files.
