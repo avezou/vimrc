@@ -1,0 +1,28 @@
+[user]
+	name = Avezou Petit-Frere
+	email = github@apfware.com
+[push]
+	default = current
+[core]
+	editor = vim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	pager = delta
+	excludesFile = ~/.gitignore
+[merge]
+	tool = kdiff3
+[alias]
+	ci = commit
+[init]
+	defaultBranch = master
+[web]
+	browser = firefox
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
